@@ -6,11 +6,17 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var marker = L.marker([51.5, -0.09]).addTo(map);
 marker.bindPopup("<b>Nice Place</b><br>Arthor:Bob<br><a href='https://google.com'>See more</a>")
 
+var sanitizeHTML = function (str) {
+	var temp = document.createElement('div');
+	temp.textContent = str;
+	return temp.innerHTML;
+};
+
 function moreInfo(eventId)
 {
     var data = {
         "web_app_name" : "event_map",
-        "chosen_event_id" : eventId,
+        "chosen_event_id" : sanitizeHTML(eventId),
     };
     tg.sendData(JSON.stringify(data));
     tg.close();
@@ -20,11 +26,11 @@ function drawEvent(event)
 {
     var marker = L.marker([Number(event.latitude), Number(event.longitude)]).addTo(map);
     marker.bindPopup(
-        "<b>" + event.name + "</b><br>"
-        + "Организатор: " + event.creator_name + "<br>" 
-        + "Начало: " + event.start_time + "<br>"
-        + "Конец: " + event.end_time + "<br>"
-        + "<button onclick='moreInfo("+event.id+")'>Подробнее</button>"
+        "<b>" + sanitizeHTML(event.name) + "</b><br>"
+        + "Организатор: " + sanitizeHTML(event.creator_name) + "<br>" 
+        + "Начало: " + sanitizeHTML(event.start_time) + "<br>"
+        + "Конец: " + sanitizeHTML(event.end_time) + "<br>"
+        + "<button onclick='moreInfo("+sanitizeHTML(event.id)+")'>Подробнее</button>"
     )
 }
 
