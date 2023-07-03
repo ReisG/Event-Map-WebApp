@@ -1,5 +1,6 @@
 <html>
     <head>
+        <meta charset="utf-8">
         <!-- Connecting to Telegram -->
         <script src="https://telegram.org/js/telegram-web-app.js"></script>
         <!-- Connecting Leaflet -->
@@ -15,9 +16,6 @@
     <body>
         <div id="map"></div>
 
-        <!-- Leaflet working -->
-        <script src="mapDrow.js"></script>
-
         <!-- Telegram init -->
         <script>
             var tg = window.Telegram.WebApp;
@@ -29,13 +27,10 @@
             }
 
             tg.expand();
-
-            tg.MainButton.onclick(exitAndClose);
-            tg.MainButton.show();
-
-            tg.BackButton.show();
-
             tg.ready();
         </script>
+
+        <!-- Leaflet working -->
+        <script src="mapDrow.js"></script>
     </body>
 </html>
