@@ -26,8 +26,8 @@ function drawEvent(event)
     var marker = L.marker([Number(event.latitude), Number(event.longitude)]).addTo(map);
     let start_time = Date(Number(event.start_time));
     let end_time = Date(Number(event.end_time));
-    let start_time_string = start_time.getHours() + ":" : start_time.setMinutes() + " " + start_time.getDate() + "/" + start_time.getMonth() + "/" + start_time.getFullYear();
-    let end_time_string = end_time.getHours() + ":" : end_time.setMinutes() + " " + end_time.getDate() + "/" + end_time.getMonth() + "/" + end_time.getFullYear();
+    let start_time_string = start_time.getHours() + ":" + start_time.setMinutes() + " " + start_time.getDate() + "/" + start_time.getMonth() + "/" + start_time.getFullYear();
+    let end_time_string = end_time.getHours() + ":" + end_time.setMinutes() + " " + end_time.getDate() + "/" + end_time.getMonth() + "/" + end_time.getFullYear();
     marker.bindPopup(
         "<b>" + sanitizeHTML(event.name) + "</b><br>"
         + "Организатор: " + sanitizeHTML(event.creator_name) + "<br>" 
